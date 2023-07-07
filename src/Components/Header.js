@@ -8,7 +8,7 @@ const Header = () => {
      
           <h1 className="header1">Task App</h1>
           <Link to={"/"}>
-            <h2 className="home">Home</h2>
+            <button className="home">Home</button>
           </Link>
         <div className="dropdown">
           <button className="dropbtn">App Drawer</button>

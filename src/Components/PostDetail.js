@@ -40,7 +40,7 @@ const PostDetail = () => {
               <Link to={"/authors/"+item.authorId}>
                 <h6>Author id:- {item?.authorId}</h6>
               </Link>
-              <h5  >Text :- {item?.text}</h5>
+              <h5>Text :- {item?.text}</h5>
             </div>
           );
         })}
@@ -50,3 +50,5 @@ const PostDetail = () => {
 };
 
 export default PostDetail;
+
+

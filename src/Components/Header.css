@@ -27,6 +27,8 @@ a {
   width: 80px;
   text-align: center;
   height: 35px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
 /* Dropdown Button */
