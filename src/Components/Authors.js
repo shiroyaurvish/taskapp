@@ -16,7 +16,6 @@ const Authors = () => {
 
   const noOfTotalPages = Math.ceil(allAuthor.length/authorsPerPage);
   const pages = [...Array(noOfTotalPages + 1).keys()].slice(1);
-  // console.log(pages)
 
   const indexOfLastAuthor = currentPage * authorsPerPage;
   const indexOfFirstAuthor = indexOfLastAuthor - authorsPerPage;
@@ -45,9 +44,8 @@ const Authors = () => {
         <option value="25">25</option>
         <option value="50">50</option>
       </select>
-    <div>
       <h1>AuthorList</h1>
-      {/* <h1>{noOfTotalPages}</h1> */}
+    <div>
       {visibleAuthor.map(function (item, id) {
         return (
           <Link to={"/authors/"+item.id} key={item.id}>

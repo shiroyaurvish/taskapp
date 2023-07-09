@@ -8,3 +8,13 @@
     margin: 2px;
     padding: 2px;
 }
+
+.authorlist {
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #f3e8e8;
+    max-width: 200px;
+    height: 35px;
+    border-radius: 10px;
+    margin: 10px;
+}

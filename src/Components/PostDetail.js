@@ -16,7 +16,6 @@ const PostDetail = () => {
   async function getPostInfo() {
     const data = await fetch(POST_DETAIL + id);
     const json = await data.json();
-    // console.log(json);
     setPosts(json);
   }
 
@@ -25,7 +24,7 @@ const PostDetail = () => {
     const json2 = await data2.json();
     setComments(json2);
   }
-  // const postDetail = usePosts(id)
+
   return (
     <div>
       <h1>PostTitle :- {posts[0]?.title}</h1>

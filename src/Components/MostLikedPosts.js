@@ -12,7 +12,6 @@ const MostLikedPosts = () => {
   async function getMostLikedPosts() {
     const data = await fetch(POSTS);
     const json = await data.json();
-    // console.log(json);
     setMostLikedPosts(json);
   }
   return (

@@ -12,7 +12,6 @@ const MostCommentedPosts = () => {
   async function getMostCommentedPosts() {
     const data = await fetch(POSTS);
     const json = await data.json();
-    // console.log(json);
     setMostCommentedPosts(json);
   }
   return (

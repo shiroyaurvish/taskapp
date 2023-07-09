@@ -3,10 +3,19 @@ import { Link, useParams } from "react-router-dom";
 import useAuthor from "./utils/useAuthor";
 import { AUTHOR_POST } from "../Constants/Constants";
 import moment from "moment/moment";
+import "./AuthorDetail.css";
+
+const AuthorHeader = () => {
+  console.log("Author Header-->")
+  return (
+    <div>
+      <h1>Author Detail</h1>
+    </div>
+  );
+};
 
 const AuthorDetail = () => {
   const { id } = useParams();
-
   const [posts, setPosts] = useState([]);
   const [selectedSort, setSelectedSort] = useState("Featured");
 
@@ -17,7 +26,6 @@ const AuthorDetail = () => {
   async function getPosts() {
     const data = await fetch(AUTHOR_POST + id);
     const json = await data.json();
-    // console.log(json)
     let sortedPosts = [...json];
     switch (selectedSort) {
       case "date-oldesttolatest":
@@ -26,8 +34,6 @@ const AuthorDetail = () => {
             moment(a.datePublished).valueOf() -
             moment(b.datePublished).valueOf()
         );
-        // sortedPosts = json.sort((a, b) => moment((a.datePublished)).format('MMMM Do YYYY, h:mm:ss a') - moment((b.datePublished)).format('MMMM Do YYYY, h:mm:ss a'));
-        // sortedPosts = json.sort((a, b) => console.log(moment(a.datePublished).valueOf() - moment(b.datePublished).valueOf()));
         break;
       case "date-latesttooldest":
         sortedPosts = json.sort(
@@ -58,7 +64,7 @@ const AuthorDetail = () => {
   return (
     <div>
       <div>
-        <h1>Author Detail</h1>
+        <AuthorHeader/>
         <h3>Name :- {authors.firstName + " " + authors.lastName}</h3>
         <h3>Contact No:- {authors.phone}</h3>
         <h3>Total Comments:- {authors.numComments}</h3>
@@ -69,7 +75,6 @@ const AuthorDetail = () => {
         <h1>Post List:</h1>
         <div>
           <label for="posts">Sort by:</label>
-
           <select
             name="posts"
             id="posts"
@@ -89,7 +94,7 @@ const AuthorDetail = () => {
         </div>
         {posts.map((item, id) => {
           return (
-            <Link key={id} to={"/authors/posts/"+item.id}>
+            <Link key={id} to={"/authors/posts/" + item.id}>
               <li>{item.title}</li>
             </Link>
           );

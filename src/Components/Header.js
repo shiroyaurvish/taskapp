@@ -5,7 +5,6 @@ const Header = () => {
   return (
     <>
       <div className="navbar">
-     
           <h1 className="header1">Task App</h1>
           <Link to={"/"}>
             <button className="home">Home</button>
@@ -17,7 +16,6 @@ const Header = () => {
             <Link to={"/mostcommentedposts"}>Most Commented Posts</Link>
           </div>
         </div>
-        
       </div>
     </>
   );
