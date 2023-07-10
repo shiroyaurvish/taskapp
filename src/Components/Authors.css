@@ -1,3 +1,7 @@
+.authors{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
 .active{
     color: red;
     font-size: 24px;

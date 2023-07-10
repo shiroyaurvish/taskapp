@@ -4,8 +4,7 @@ import Body from "./Components/Body";
 import AuthorDetail from "./Components/AuthorDetail";
 import Authors from "./Components/Authors";
 import PostDetail from "./Components/PostDetail";
-import MostLikedPosts from "./Components/MostLikedPosts";
-import MostCommentedPosts from "./Components/MostCommentedPosts";
+import TopPosts from "./Components/TopPosts";
 
 const appRouter = createBrowserRouter([
   {
@@ -26,11 +25,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path:"/mostlikedposts",
-        element: <MostLikedPosts/>
+        element: <TopPosts type="likes" />
       },
       {
         path:"/mostcommentedposts",
-        element: <MostCommentedPosts/>
+        element: <TopPosts type="comments" />
       },
     ]
   }

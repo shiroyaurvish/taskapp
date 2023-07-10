@@ -3,8 +3,8 @@ import { AUTHOR_LIST } from "../Constants/Constants";
 import "./Authors.css"
 import { Link } from "react-router-dom";
 import AuthorList from "./AuthorList";
+import PageButton from "./PageButton";
 
-//List of Author Display on the Screen
 const Authors = () => {
   const [allAuthor, setAllAuthor] = useState([]);
   const [authorsPerPage, setAuthorsPerPage] = useState(20);
@@ -30,22 +30,30 @@ const Authors = () => {
     if(currentPage !== noOfTotalPages) setCurrentPage(currentPage + 1)
   }
 
-  //Fetch Author Api
+  const handleAuthorsPerPageChange = (e) => {
+    setAuthorsPerPage(e.target.value);
+  };
+
   async function getAuthor() {
+    try{
     const data = await fetch(AUTHOR_LIST);
     const json = await data.json();
     setAllAuthor(json);
+    }catch(error){
+      console.log(error);
+    }
   }
 
   return (
     <>
-      <select onChange={(e)=>{setAuthorsPerPage(e.target.value)}}>
+      <select onChange={handleAuthorsPerPageChange}>
         <option value="20">20</option>
         <option value="25">25</option>
         <option value="50">50</option>
       </select>
       <h1>AuthorList</h1>
     <div>
+      <div className="authors">
       {visibleAuthor.map(function (item, id) {
         return (
           <Link to={"/authors/"+item.id} key={item.id}>
@@ -53,9 +61,10 @@ const Authors = () => {
           </Link>
         );
       })}
+      </div>
       <div>
-      <button className="prev-nextbuttons" onClick={prevPageHandler}>Prev</button>
-      <button className="prev-nextbuttons" onClick={nextPageHandler}>Next</button>
+      <PageButton onClick={prevPageHandler} name="Prev" />
+      <PageButton onClick={nextPageHandler} name="Next" />
       </div>
       <p>
         {

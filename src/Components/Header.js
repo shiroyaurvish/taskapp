@@ -5,10 +5,9 @@ const Header = () => {
   return (
     <>
       <div className="navbar">
+        <Link to={"/"}>
           <h1 className="header1">Task App</h1>
-          <Link to={"/"}>
-            <button className="home">Home</button>
-          </Link>
+        </Link>
         <div className="dropdown">
           <button className="dropbtn">App Drawer</button>
           <div className="dropdown-content">

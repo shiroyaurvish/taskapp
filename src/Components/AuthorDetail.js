@@ -4,6 +4,7 @@ import useAuthor from "./utils/useAuthor";
 import { AUTHOR_POST } from "../Constants/Constants";
 import moment from "moment/moment";
 import "./AuthorDetail.css";
+import AuthorPersonalInfo from "./AuthorPersonalInfo";
 
 const AuthorHeader = () => {
   console.log("Author Header-->")
@@ -65,11 +66,7 @@ const AuthorDetail = () => {
     <div>
       <div>
         <AuthorHeader/>
-        <h3>Name :- {authors.firstName + " " + authors.lastName}</h3>
-        <h3>Contact No:- {authors.phone}</h3>
-        <h3>Total Comments:- {authors.numComments}</h3>
-        <h3>Total Likes:- {authors.numLikes}</h3>
-        <h3>Total Posts:- {authors.numPosts}</h3>
+        <AuthorPersonalInfo authors={authors}/>
       </div>
       <div>
         <h1>Post List:</h1>

@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { COMMENT_DETAIL, POST_DETAIL } from "../Constants/Constants";
+import PostInfo from "./PostInfo";
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -14,9 +15,13 @@ const PostDetail = () => {
   }, []);
 
   async function getPostInfo() {
+    try{
     const data = await fetch(POST_DETAIL + id);
     const json = await data.json();
     setPosts(json);
+  }catch(err){
+    console.log(err);
+  }
   }
 
   async function getCommentInfo() {
@@ -26,25 +31,7 @@ const PostDetail = () => {
   }
 
   return (
-    <div>
-      <h1>PostTitle :- {posts[0]?.title}</h1>
-      <p>Description :- {posts[0]?.description}</p>
-      <h2>Likes :- {posts[0]?.numLikes}</h2>
-      <h2>Comments :- {posts[0]?.numComments}</h2>
-      <h3>
-        Comment List :-
-        {comments.map((item) => {
-          return (
-            <div key={item.id}>
-              <Link to={"/authors/"+item.authorId}>
-                <h6>Author id:- {item?.authorId}</h6>
-              </Link>
-              <h5>Text :- {item?.text}</h5>
-            </div>
-          );
-        })}
-      </h3>
-    </div>
+    <PostInfo posts={posts} comments={comments}/>
   );
 };
 
